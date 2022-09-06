@@ -688,3 +688,17 @@ Executing `index.jet` will produce:
 `import` makes all the blocks from the imported template available in the importing template. There is no way to only import (a) specific block(s).
 
 Since the imported template isn't actually executed, the blocks defined in it don't run until you `yield` them explicitely.
+
+Import and extend paths can be both relative and absolute. For example:
+
+    <!-- file "./components/awesome_title.jet" -->
+    {{ block awesomeTitle(title) }}
+        <h1> {{ title }} </h1>
+    {{ end }}
+
+    <!-- file: "./pages/index.jet" -->
+    {{ import "../components/awesome_title.jet" }}
+    
+    {* Same as *}
+    {{ import "/components/awesome_title.jet" }}
+    
